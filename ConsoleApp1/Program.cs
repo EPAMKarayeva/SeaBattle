@@ -12,7 +12,7 @@ namespace ConsoleApp1
         static void Main(string[] args)
         {
             const int row = 25;
-            const int column = 50;
+            const int column = 40;
             string[,] array = new string[row, column];
 
             CreateBorder(array);
@@ -20,8 +20,10 @@ namespace ConsoleApp1
             OneDeckShip ship = new OneDeckShip();
             ship.GenerateShip(array, random);
             TwoDeckShip twoDeskShip = new TwoDeckShip();
-            twoDeskShip.GenerateShip(array, random); 
-                
+            twoDeskShip.GenerateShip(array, random);
+            ThreeDeckShip threeDeskShip = new ThreeDeckShip();
+            threeDeskShip.GenerateShip(array, random);
+
             for (int i = 0; i < array.GetLength(0); i++)
             {
                 for (int j = 0; j < array.GetLength(1); j++)
