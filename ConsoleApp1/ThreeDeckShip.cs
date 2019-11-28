@@ -21,7 +21,7 @@ namespace ConsoleApp1
                     array[i, j] = "x";
                     for (int x = 0; x < 2; x++)
                     {
-                        vector.GenerateDirectionForTwoDeck(i, j, random);
+                        vector.GenerateDirection(i, j, random);
                         array[vector.x, vector.y] = "x";
                         return;
                     }
