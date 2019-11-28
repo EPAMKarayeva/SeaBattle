@@ -11,15 +11,17 @@ namespace ConsoleApp1
         
         static void Main(string[] args)
         {
-            const int row = 15;
-            const int column = 30;
+            const int row = 25;
+            const int column = 50;
             string[,] array = new string[row, column];
 
             CreateBorder(array);
             Random random = new Random(); 
             OneDeckShip ship = new OneDeckShip();
             ship.GenerateShip(array, random);
-
+            TwoDeckShip twoDeskShip = new TwoDeckShip();
+            twoDeskShip.GenerateShip(array, random); 
+                
             for (int i = 0; i < array.GetLength(0); i++)
             {
                 for (int j = 0; j < array.GetLength(1); j++)
