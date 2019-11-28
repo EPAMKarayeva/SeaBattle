@@ -15,9 +15,10 @@ namespace ConsoleApp1
             const int column = 30;
             string[,] array = new string[row, column];
 
-            DrawBorder(array);
+            CreateBorder(array);
+            Random random = new Random(); 
             OneDeckShip ship = new OneDeckShip();
-            ship.GenerateShip(array);
+            ship.GenerateShip(array, random);
 
             for (int i = 0; i < array.GetLength(0); i++)
             {
@@ -28,12 +29,12 @@ namespace ConsoleApp1
 
                 Console.WriteLine("");
             }
-
+      
             Console.ReadKey();
         }
 
      
-        static void DrawBorder(string[,] array)
+        static void CreateBorder(string[,] array)
         {
           
             for (int i = 0; i < array.GetLength(0); i++)
