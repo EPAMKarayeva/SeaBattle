@@ -12,7 +12,7 @@ namespace ConsoleApp1
         static void Main(string[] args)
         {
             const int row = 25;
-            const int column = 50;
+            const int column = 40;
             string[,] array = new string[row, column];
 
             CreateBorder(array);
