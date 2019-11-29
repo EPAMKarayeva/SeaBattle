@@ -14,6 +14,7 @@ namespace ConsoleApp1
 
             if (i >= 1 && i != array.GetLength(0) - 1 && j != array.GetLength(1) - 1 && j >= 1)
             {
+                //я не знаю, как это сократить. если выношу в отдельный метод, то падает stackoverflow exception
                 if (array[i, j] == " " && array[i, j - 1] == " " && array[i - 1, j] == " " && array[i + 1, j] == " " && array[i, j + 1] == " " &&
                    array[i, j - 2] == " " && array[i - 2, j] == " " && array[i + 2, j] == " " && array[i, j + 2] == " ")
                 {

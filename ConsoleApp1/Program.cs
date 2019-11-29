@@ -19,11 +19,15 @@ namespace ConsoleApp1
             Random random = new Random(); 
             OneDeckShip ship = new OneDeckShip();
             ship.GenerateShip(array, random);
+
             TwoDeckShip twoDeskShip = new TwoDeckShip();
             twoDeskShip.GenerateShip(array, random);
 
             ThreeDeckShip threeDeckShip = new ThreeDeckShip();
             threeDeckShip.GenerateShip(array, random);
+
+            FourDeckShip fourDeckShip = new FourDeckShip();
+            fourDeckShip.GenerateShip(array, random);
 
             for (int i = 0; i < array.GetLength(0); i++)
             {
