@@ -14,6 +14,7 @@ namespace ConsoleApp1
         public int GenerateDirection(Random random)
         {
             int count = random.Next(1, 4);
+
             return count;
         }
 
@@ -21,6 +22,7 @@ namespace ConsoleApp1
         {
             this.x = i;
             this.y = j;
+
             switch (count)
             {
                 case 1:

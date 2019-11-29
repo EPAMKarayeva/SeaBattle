@@ -12,15 +12,12 @@ namespace ConsoleApp1
 
         public void CheckCoordinats(int i, int j, string[,] array, Random random)
         {
-            if (i >= 1 && i != array.GetLength(0) - 1 && j != array.GetLength(1) - 1 && j >= 1)
+            if (CheckAroundIsFree(i,j,array))
             {
-                if (array[i, j] == " " && array[i, j - 1] == " " && array[i - 1, j] == " " && array[i + 1, j] == " " && array[i, j + 1] == " ")
-                {
-                    array[i, j] = "x";
-                    return;
-                }
-
+                 array[i, j] = "x";
+                 return;
             }
+
             GenerateCoordinats(array, out int m, out int n, random);
             CheckCoordinats(m, n, array, random);
         }
@@ -33,7 +30,6 @@ namespace ConsoleApp1
 
         public void GenerateShip(string[,] array, Random random)
         {
-          
             for (int m = 0; m < count; m++)
             {
                 GenerateCoordinats(array, out int i, out int j, random);
@@ -41,13 +37,35 @@ namespace ConsoleApp1
             }
         }
 
-        //public void FillArray(string[,] array, int i, int j, Random random)
-        //{
-        //    if (array[i, j] == " " || array[i, j - 1] == " " || array[i - 1, j] == " " || array[i + 1, j] == " " || array[i, j + 1] == " ")
-        //    {
-        //        array[i, j] = "x";
-        //        return;
-        //    }
-        //}
+        public bool CheckAroundIsFree(int i, int j, string[,] array)
+        {
+            bool mark = true;
+
+            if (i >= 1 && i != array.GetLength(0) - 1 && j != array.GetLength(1) - 1 && j >= 1)
+            {
+                for (int k = i - 1; k <= i + 1; k++)
+                {
+                    for (int m = j - 1; m < j + 1; m++)
+                    {
+                        if (k == i && j == m)
+                        {
+                            continue;
+                        }
+
+                        if (array[k, j] != " ")
+                        {
+                            mark = false;
+                            break;
+                        }
+                    }
+
+                    j--;
+                }
+                return mark;
+            }
+            return false;
+            
+      
+        }
     }
 }

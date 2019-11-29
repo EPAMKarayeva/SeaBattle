@@ -40,7 +40,7 @@ namespace ConsoleApp1
         public void GenerateShip(string[,] array, Random random)
         {
 
-            for (int x = 0; x < 4; x++)
+            for (int x = 0; x < 2; x++)
             {
                 GenerateCoordinats(array, out int m, out int n, random);
                 CheckCoordinats(m, n, array, random);

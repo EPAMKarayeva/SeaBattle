@@ -9,6 +9,7 @@ namespace ConsoleApp1
     class FourDeckShip : IShipGenerator
     {
         Vector vector = new Vector();
+
         public void CheckCoordinats(int i, int j, string[,] array, Random random)
         {
             if (i >= 1 && i != array.GetLength(0) - 1 && j != array.GetLength(1) - 1 && j >= 1)
@@ -18,8 +19,9 @@ namespace ConsoleApp1
                    array[i, j - 3] == " " && array[i - 3, j] == " " && array[i + 3, j] == " " && array[i, j + 3] == " " && array[i - 1, j - 1] == " " &&
                    array[i, j - 4] == " " && array[i - 4, j] == " " && array[i + 4, j] == " " && array[i, j + 4] == " ")
                 {
-                    array[i, j] = "x";
                     int count = vector.GenerateDirection(random);
+
+                    array[i, j] = "x";
                     vector.ChooseDirection(count, i, j, random);
                     array[vector.x, vector.y] = "x";
 

@@ -19,17 +19,18 @@ namespace ConsoleApp1
                    array[i, j - 2] == " " && array[i - 2, j] == " " && array[i + 2, j] == " " && array[i, j + 2] == " " && array[i + 1, j + 1] == " " &&
                    array[i, j - 3] == " " && array[i - 3, j] == " " && array[i + 3, j] == " " && array[i, j + 3] == " " && array[i - 1,j - 1]==" ")
                 {
-                    array[i, j] = "x";
-                    int count = vector.GenerateDirection(random);                 
+                    int count = vector.GenerateDirection(random);
+
+                    array[i, j] = "x";   
                     vector.ChooseDirection(count, i, j, random);
                     array[vector.x, vector.y] = "x";
                     vector.ChooseDirection(count, vector.x, vector.y, random);
                     array[vector.x, vector.y] = "x";
-                    return;
-                   
-                }
 
+                    return;
+                }
             }
+
             GenerateCoordinats(array, out int m, out int n, random);
             CheckCoordinats(m, n, array, random);
         }

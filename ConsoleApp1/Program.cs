@@ -12,7 +12,7 @@ namespace ConsoleApp1
         static void Main(string[] args)
         {
             const int row = 25;
-            const int column = 40;
+            const int column = 25;
             string[,] array = new string[row, column];
 
             CreateBorder(array);
@@ -50,7 +50,6 @@ namespace ConsoleApp1
             {
                 for (int j = 0; j < array.GetLength(1); j++)
                 {
-
                     if (i == 0 || i == array.GetLength(0) - 1)
                     {
                         array[i, j] = "=";
@@ -61,12 +60,10 @@ namespace ConsoleApp1
                         array[i, j] = "|";
                     }
 
-
                     if (i != 0 && i != array.GetLength(0) - 1 && j != 0 && j != array.GetLength(1) - 1)
                     {
                         array[i, j] = " ";
                     }
-
                 }        
 
             }      
