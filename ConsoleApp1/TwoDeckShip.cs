@@ -18,7 +18,8 @@ namespace ConsoleApp1
                    array[i, j - 2] == " " && array[i - 2, j] == " " && array[i + 2, j] == " " && array[i, j + 2] == " ")
                 {
                     array[i, j] = "x";
-                    vector.GenerateDirection(i,j, random);
+                    int count =vector.GenerateDirection(random);
+                    vector.ChooseDirection(count, i,j, random);
                     array[vector.x, vector.y] = "x";
                     return;
                 }

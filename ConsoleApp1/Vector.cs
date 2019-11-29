@@ -11,11 +11,16 @@ namespace ConsoleApp1
         public int x;
         public int y;
 
-        public void GenerateDirection(int i, int j, Random random)
+        public int GenerateDirection(Random random)
+        {
+            int count = random.Next(1, 4);
+            return count;
+        }
+
+        public void ChooseDirection(int count, int i, int j, Random random)
         {
             this.x = i;
             this.y = j;
-            int count = random.Next(1, 4);
             switch (count)
             {
                 case 1:
@@ -32,8 +37,6 @@ namespace ConsoleApp1
                     break;
             }
         }
-
-      
 
     }
 }

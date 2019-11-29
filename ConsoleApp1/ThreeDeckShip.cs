@@ -8,23 +8,25 @@ namespace ConsoleApp1
 {
     class ThreeDeckShip : IShipGenerator
     {
+        Vector vector = new Vector();
+
         public void CheckCoordinats(int i, int j, string[,] array, Random random)
         {
-            Vector vector = new Vector();
-
+            
             if (i >= 1 && i != array.GetLength(0) - 1 && j != array.GetLength(1) - 1 && j >= 1)
             {
                 if (array[i, j] == " " && array[i, j - 1] == " " && array[i - 1, j] == " " && array[i + 1, j] == " " && array[i, j + 1] == " " &&
-                   array[i, j - 2] == " " && array[i - 2, j] == " " && array[i + 2, j] == " " && array[i, j + 2] == " " &&
-                   array[i, j - 3] == " " && array[i - 3, j] == " " && array[i + 3, j] == " " && array[i, j + 3] == " ")
+                   array[i, j - 2] == " " && array[i - 2, j] == " " && array[i + 2, j] == " " && array[i, j + 2] == " " && array[i + 1, j + 1] == " " &&
+                   array[i, j - 3] == " " && array[i - 3, j] == " " && array[i + 3, j] == " " && array[i, j + 3] == " " && array[i - 1,j - 1]==" ")
                 {
                     array[i, j] = "x";
-                    for (int x = 0; x < 2; x++)
-                    {
-                        vector.GenerateDirection(i, j, random);
-                        array[vector.x, vector.y] = "x";
-                        return;
-                    }
+                    int count = vector.GenerateDirection(random);                 
+                    vector.ChooseDirection(count, i, j, random);
+                    array[vector.x, vector.y] = "x";
+                    vector.ChooseDirection(count, vector.x, vector.y, random);
+                    array[vector.x, vector.y] = "x";
+                    return;
+                   
                 }
 
             }
