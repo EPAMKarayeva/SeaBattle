@@ -12,18 +12,52 @@ namespace ConsoleApp1
 
         public override void CheckCoordinate(int i, int j, string[,] array, Random random)
         {
+         
             if (CheckAroundIsFree(i, j, array))
             {
                 int number = vector.GenerateDirection(random);
 
-                array[i, j] = "x";
-                vector.ChooseDirection(number, i, j, random);
-                array[vector.x, vector.y] = "x";
-                return;
+                if (CheckSpace(number, array, i, j, random))
+                {
+                    array[i, j] = "x";
+                    vector.ChooseDirection(number, i, j, random);
+                    array[vector.x, vector.y] = "x";
+                    return;
+                }
             }
 
             GenerateCoordinats(array, out int m, out int n, random);
             CheckCoordinate(m, n, array, random);
+        }
+
+        public bool CheckSpace(int number, string[,] array, int i, int j, Random random)
+        {
+
+            for (int k = 0; k < 1; k++)
+            {
+                switch (number)
+                {
+                    case 1:
+                        j += 1;
+                        break;
+                    case 2:
+                        j -= 1;
+                        break;
+                    case 3:
+                        i += 1;
+                        break;
+                    case 4:
+                        i -= 1;
+                        break;
+
+                }
+                if (!CheckAroundIsFree(i, j, array))
+                {
+                    return false;
+                }
+
+            }
+            return true;
         }
 
     }
