@@ -59,7 +59,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="FourDeckShip.cs" />
-    <Compile Include="IShipGenerator.cs" />
     <Compile Include="OneDeckShip.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
