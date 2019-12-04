@@ -6,7 +6,7 @@ using System.Threading;
 
 namespace ConsoleApp1
 {
-    class OneDeckShip 
+    class OneDeckShip
     {
         public int count = 2;
 
@@ -50,6 +50,12 @@ namespace ConsoleApp1
                         if (k == i && j == m)
                         {
                             continue;
+                        }
+
+                        if (k <= 1 || k >= array.GetLength(0) - 1 || m >= array.GetLength(1) - 1 || m <= 1)
+                        {
+                            mark = false;
+                            break;
                         }
 
                         if (array[k, j] != " ")

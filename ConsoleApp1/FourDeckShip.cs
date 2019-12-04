@@ -23,7 +23,6 @@ namespace ConsoleApp1
                     vector.ChooseDirection(number, i, j, random);
                     array[vector.x, vector.y] = "x";
 
-
                     for (int h = 0; h < 2; h++)
                     {
                         vector.ChooseDirection(number, vector.x, vector.y, random);
@@ -34,7 +33,7 @@ namespace ConsoleApp1
                 }
             }
 
-           
+
             GenerateCoordinats(array, out int m, out int n, random);
             CheckCoordinate(m, n, array, random);
         }
@@ -43,31 +42,39 @@ namespace ConsoleApp1
         public bool CheckSpace(int number, string[,] array, int i, int j, Random random)
         {
 
+            bool flag = true;
+
             for (int k = 0; k < 3; k++)
             {
                 switch (number)
                 {
                     case 1:
-                        j += 1;
-                        break;
-                    case 2:
-                        j -= 1;
-                        break;
-                    case 3:
                         i += 1;
                         break;
-                    case 4:
+                    case 2:
                         i -= 1;
+                        break;
+                    case 3:
+                        j += 1;
+                        break;
+                    case 4:
+                        j -= 1;
                         break;
 
                 }
+
                 if (!CheckAroundIsFree(i, j, array))
                 {
-                    return false;
+                    flag = false;
+                    break;
                 }
-
+                else
+                {
+                    flag = true;
+                }
             }
-            return true;
+
+            return flag;
         }
 
     }

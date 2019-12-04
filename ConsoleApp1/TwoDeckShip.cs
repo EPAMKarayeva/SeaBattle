@@ -12,12 +12,11 @@ namespace ConsoleApp1
 
         public override void CheckCoordinate(int i, int j, string[,] array, Random random)
         {
-         
+
             if (CheckAroundIsFree(i, j, array))
             {
                 int number = vector.GenerateDirection(random);
-
-                if (CheckSpace(number, array, i, j, random))
+                if (CheckSpace(number, array, i, j))
                 {
                     array[i, j] = "x";
                     vector.ChooseDirection(number, i, j, random);
@@ -30,34 +29,39 @@ namespace ConsoleApp1
             CheckCoordinate(m, n, array, random);
         }
 
-        public bool CheckSpace(int number, string[,] array, int i, int j, Random random)
+        public bool CheckSpace(int number, string[,] array, int i, int j)
         {
 
-            for (int k = 0; k < 1; k++)
-            {
-                switch (number)
+            bool flag = true;
+
+             switch (number)
                 {
                     case 1:
-                        j += 1;
-                        break;
-                    case 2:
-                        j -= 1;
-                        break;
-                    case 3:
                         i += 1;
                         break;
-                    case 4:
+                    case 2:
                         i -= 1;
+                        break;
+                    case 3:
+                        j += 1;
+                        break;
+                    case 4:
+                        j -= 1;
                         break;
 
                 }
+
                 if (!CheckAroundIsFree(i, j, array))
                 {
-                    return false;
+                    flag = false;
                 }
+                else
+                {
+                    flag = true;
+                }
+     
 
-            }
-            return true;
+            return flag;
         }
 
     }
