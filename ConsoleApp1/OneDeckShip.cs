@@ -30,6 +30,7 @@ namespace ConsoleApp1
             if (CheckAroundIsFree(i, j, array))
             {
                 array[i, j] = "x";
+
                 return;
             }
 
@@ -41,8 +42,7 @@ namespace ConsoleApp1
         {
             bool mark = true;
 
-            if (i >= 1 && i != array.GetLength(0) - 1 && j != array.GetLength(1) - 1 && j >= 1)
-            {
+      
                 for (int k = i - 1; k <= i + 1; k++)
                 {
                     for (int m = j - 1; m < j + 1; m++)
@@ -68,8 +68,7 @@ namespace ConsoleApp1
                     j--;
                 }
                 return mark;
-            }
-            return false;
+   
 
 
         }

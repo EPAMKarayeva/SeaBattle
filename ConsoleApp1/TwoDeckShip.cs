@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
+using System.Threading;
 
 namespace ConsoleApp1
 {
@@ -21,6 +21,7 @@ namespace ConsoleApp1
                     array[i, j] = "x";
                     vector.ChooseDirection(number, i, j, random);
                     array[vector.x, vector.y] = "x";
+
                     return;
                 }
             }
