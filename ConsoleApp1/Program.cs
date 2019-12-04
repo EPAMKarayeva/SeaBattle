@@ -11,8 +11,8 @@ namespace ConsoleApp1
         
         static void Main(string[] args)
         {
-            const int row = 25;
-            const int column = 25;
+            const int row = 15;
+            const int column = 15;
             string[,] array = new string[row, column];
 
             CreateBorder(array);
@@ -20,14 +20,14 @@ namespace ConsoleApp1
             OneDeckShip ship = new OneDeckShip();
             ship.GenerateShip(array, random);
 
-            TwoDeckShip twoDeskShip = new TwoDeckShip();
-            twoDeskShip.GenerateShip(array, random);
+            //TwoDeckShip twoDeskShip = new TwoDeckShip();
+            //twoDeskShip.GenerateShip(array, random);
 
-            ThreeDeckShip threeDeckShip = new ThreeDeckShip();
-            threeDeckShip.GenerateShip(array, random);
+            //ThreeDeckShip threeDeckShip = new ThreeDeckShip();
+            //threeDeckShip.GenerateShip(array, random);
 
-            FourDeckShip fourDeckShip = new FourDeckShip();
-            fourDeckShip.GenerateShip(array, random);
+            //FourDeckShip fourDeckShip = new FourDeckShip();
+            //fourDeckShip.GenerateShip(array, random);
 
             for (int i = 0; i < array.GetLength(0); i++)
             {
@@ -38,7 +38,7 @@ namespace ConsoleApp1
 
                 Console.WriteLine("");
             }
-      
+        
             Console.ReadKey();
         }
 

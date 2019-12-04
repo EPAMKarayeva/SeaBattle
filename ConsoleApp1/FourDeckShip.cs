@@ -10,7 +10,7 @@ namespace ConsoleApp1
     {
         readonly Vector vector = new Vector();
 
-        public override void CheckCoordinate(int i, int j, string[,] array, Random random)
+        public override bool CheckCoordinate(int i, int j, string[,] array, Random random)
         {
 
             if (CheckAroundIsFree(i, j, array))
@@ -29,13 +29,13 @@ namespace ConsoleApp1
                         array[vector.x, vector.y] = "x";
                     }
                  
-                    return;
+                    return true;
                 }
             }
 
-
-            GenerateCoordinats(array, out int m, out int n, random);
-            CheckCoordinate(m, n, array, random);
+            return false;
+            //GenerateCoordinats(array, out int m, out int n, random);
+            //CheckCoordinate(m, n, array, random);
         }
 
 
@@ -67,10 +67,6 @@ namespace ConsoleApp1
                 {
                     flag = false;
                     break;
-                }
-                else
-                {
-                    flag = true;
                 }
             }
 

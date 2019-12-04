@@ -8,14 +8,22 @@ namespace ConsoleApp1
 {
     class OneDeckShip
     {
-        public int count = 2;
+        public int count = 4;
 
         public void GenerateShip(string[,] array, Random random)
         {
             for (int m = 0; m < count; m++)
             {
                 GenerateCoordinats(array, out int i, out int j, random);
-                CheckCoordinate(i, j, array, random);
+                var test = CheckCoordinate(i, j, array, random);
+
+                while (!test)
+                {
+                    GenerateCoordinats(array, out i, out j, random);
+                    test = CheckCoordinate(i, j, array, random);
+                }
+
+                //CheckCoordinate(i, j, array, random);
             }
         }
 
@@ -25,51 +33,55 @@ namespace ConsoleApp1
             j = random.Next(0, array.GetLength(1));
         }
 
-        public virtual void CheckCoordinate(int i, int j, string[,] array, Random random)
+        public virtual bool CheckCoordinate(int i, int j, string[,] array, Random random)
         {
             if (CheckAroundIsFree(i, j, array))
             {
                 array[i, j] = "x";
 
-                return;
+                return true;
             }
 
-            GenerateCoordinats(array, out int m, out int n, random);
-            CheckCoordinate(m, n, array, random);
+            //GenerateCoordinats(array, out int m, out int n, random);
+            //CheckCoordinate(m, n, array, random);
+
+            return false;
         }
 
         public bool CheckAroundIsFree(int i, int j, string[,] array)
         {
             bool mark = true;
 
-      
-                for (int k = i - 1; k <= i + 1; k++)
+            array[10, 10] = "x";
+            i = 9;
+            j = 11;
+
+            for (int k = i - 1; k <= i + 1; k++)
+            {
+                for (int m = j - 1; m <= j + 1; m++)
                 {
-                    for (int m = j - 1; m < j + 1; m++)
+                    if (k == i && j == m)
                     {
-                        if (k == i && j == m)
-                        {
-                            continue;
-                        }
-
-                        if (k <= 1 || k >= array.GetLength(0) - 1 || m >= array.GetLength(1) - 1 || m <= 1)
-                        {
-                            mark = false;
-                            break;
-                        }
-
-                        if (array[k, j] != " ")
-                        {
-                            mark = false;
-                            break;
-                        }
+                        continue;
                     }
 
-                    j--;
-                }
-                return mark;
-   
+                    if (k <= 1 || k >= array.GetLength(0) - 1 || m >= array.GetLength(1) - 1 || m <= 1)
+                    {
+                        mark = false;
+                        break;
+                    }
 
+                    if (array[k, j] != " ")
+                    {
+                        mark = false;
+                        break;
+                    }
+                }
+
+                j--;
+            }
+
+            return mark;
 
         }
     }
