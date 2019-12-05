@@ -11,23 +11,70 @@ namespace ConsoleApp1
         
         static void Main(string[] args)
         {
-            const int row = 15;
-            const int column = 15;
+            const int row = 12;
+            const int column = 12;
             string[,] array = new string[row, column];
 
             CreateBorder(array);
-            Random random = new Random(); 
+            Random random = new Random();
+
+            FourDeckShip fourDeckShip = new FourDeckShip();
+            fourDeckShip.GenerateShip(1, array, random);
+
+            for (int i = 0; i < array.GetLength(0); i++)
+            {
+                for (int j = 0; j < array.GetLength(1); j++)
+                {
+                    Console.Write(array[i, j]);
+                }
+
+                Console.WriteLine("");
+            }
+
+            ThreeDeckShip threeDeckShip = new ThreeDeckShip();
+            threeDeckShip.GenerateShip(2, array, random);
+
+            Console.Clear();
+
+            for (int i = 0; i < array.GetLength(0); i++)
+            {
+                for (int j = 0; j < array.GetLength(1); j++)
+                {
+                    Console.Write(array[i, j]);
+                }
+
+                Console.WriteLine("");
+            }
+
+            TwoDeckShip twoDeskShip = new TwoDeckShip();
+            twoDeskShip.GenerateShip(3, array, random);
+
+            Console.Clear();
+
+            for (int i = 0; i < array.GetLength(0); i++)
+            {
+                for (int j = 0; j < array.GetLength(1); j++)
+                {
+                    Console.Write(array[i, j]);
+                }
+
+                Console.WriteLine("");
+            }
+
             OneDeckShip ship = new OneDeckShip();
-            ship.GenerateShip(array, random);
+            ship.GenerateShip(4, array, random);
 
-            //TwoDeckShip twoDeskShip = new TwoDeckShip();
-            //twoDeskShip.GenerateShip(array, random);
+            Console.Clear();
 
-            //ThreeDeckShip threeDeckShip = new ThreeDeckShip();
-            //threeDeckShip.GenerateShip(array, random);
+            for (int i = 0; i < array.GetLength(0); i++)
+            {
+                for (int j = 0; j < array.GetLength(1); j++)
+                {
+                    Console.Write(array[i, j]);
+                }
 
-            //FourDeckShip fourDeckShip = new FourDeckShip();
-            //fourDeckShip.GenerateShip(array, random);
+                Console.WriteLine("");
+            }
 
             for (int i = 0; i < array.GetLength(0); i++)
             {

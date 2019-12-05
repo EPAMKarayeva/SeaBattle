@@ -8,9 +8,8 @@ namespace ConsoleApp1
 {
     class OneDeckShip
     {
-        public int count = 4;
-
-        public void GenerateShip(string[,] array, Random random)
+  
+        public void GenerateShip(int count, string[,] array, Random random)
         {
             for (int m = 0; m < count; m++)
             {
@@ -23,7 +22,6 @@ namespace ConsoleApp1
                     test = CheckCoordinate(i, j, array, random);
                 }
 
-                //CheckCoordinate(i, j, array, random);
             }
         }
 
@@ -35,15 +33,13 @@ namespace ConsoleApp1
 
         public virtual bool CheckCoordinate(int i, int j, string[,] array, Random random)
         {
+
             if (CheckAroundIsFree(i, j, array))
             {
                 array[i, j] = "x";
 
                 return true;
             }
-
-            //GenerateCoordinats(array, out int m, out int n, random);
-            //CheckCoordinate(m, n, array, random);
 
             return false;
         }
@@ -52,11 +48,7 @@ namespace ConsoleApp1
         {
             bool mark = true;
 
-            array[10, 10] = "x";
-            i = 9;
-            j = 11;
-
-            for (int k = i - 1; k <= i + 1; k++)
+            for ( int k = i - 1; k <= i + 1; k++)
             {
                 for (int m = j - 1; m <= j + 1; m++)
                 {
@@ -71,14 +63,13 @@ namespace ConsoleApp1
                         break;
                     }
 
-                    if (array[k, j] != " ")
+                    if (array[k, m] != " ")
                     {
                         mark = false;
                         break;
                     }
                 }
 
-                j--;
             }
 
             return mark;
