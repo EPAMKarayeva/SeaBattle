@@ -38,6 +38,13 @@ namespace ConsoleApp1
                     y -= 1;
                     break;
             }
+
+
+        }
+
+        public void DontComeback(int number, int i, int j)
+        {
+
         }
 
     }
