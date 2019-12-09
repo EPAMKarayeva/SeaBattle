@@ -8,8 +8,6 @@ namespace ConsoleApp1
 {
     class OneDeckShip
     {
-        int oldDirection = 0;
-
         Vector vector = new Vector();
   
         public void GenerateShip(int count, string[,] array, Random random)
@@ -62,20 +60,18 @@ namespace ConsoleApp1
 
                         if (count == 2)
                         {
-                            for (int h = 0; h < count - 1; h++)
+                            var check = DoZigzag(count, array, vector, random);
+                            while (!check)
                             {
-                                var check = DoZigzag(count, array, vector, random);
-                                while (!check)
-                                {
-                                    check = DoZigzag(count, array, vector, random);
-                                }
+                                check = DoZigzag(count, array, vector, random);
                             }
+                            
                         }
 
                         if (count == 1)
                         {
                             
-                            for (int h = 0; h < count+1; h++)
+                            for (int h = 0; h < 2; h++)
                             {
                                 var check = DoZigzag(count, array, vector, random);
                                 while (!check)
@@ -108,7 +104,7 @@ namespace ConsoleApp1
                         continue;
                     }
 
-                    if (k < 0 || k >= array.GetLength(0) || m >= array.GetLength(1) || m < 0)
+                    if (k < 0 || k >= array.GetLength(0)-1 || m >= array.GetLength(1)-1 || m < 0)
                     {
                         mark = false;
                         break;
@@ -132,28 +128,21 @@ namespace ConsoleApp1
             return true;
         }
 
-        public void CheckDirection(int number, Random random)
-        {
-            number = vector.GenerateDirection(random);
-            if (number != oldDirection)
-            {
-                vector.ChooseDirection(number, vector.x, vector.y, random);
-                oldDirection = number;
-
-                return;
-            }
-           
-            CheckDirection(number, random);
-        }
 
       
         public bool DoZigzag(int count, string [,]array, Vector vector, Random random)
-
         {
-            int number = vector.GenerateDirection(random);
-            CheckDirection(number, random);
+            
 
-            if (vector.x <= 0 || vector.y <= 0 || vector.x >= array.GetLength(0) || vector.y >= array.GetLength(1))
+            int number = vector.GenerateDirection(random);
+            vector.ChooseDirection (number, vector.x, vector.y, random);
+
+            if (array[vector.x, vector.y] == "x")
+            {
+                return false;
+            }
+
+            if (vector.x <= 0 || vector.y <= 0 || vector.x > array.GetLength(0) - 1 || vector.y > array.GetLength(1) - 1)
             {
                 return false;
             }

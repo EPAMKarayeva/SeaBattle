@@ -9,21 +9,24 @@ namespace ConsoleApp1
     public class Vector
     {
         public int x;
+
         public int y;
+
+        public int z;
+
+        public int w;
 
         public int GenerateDirection(Random random)
         {
-            int count = random.Next(1, 4);
-
-            return count;
+            return random.Next(1, 4);
         }
 
-        public void ChooseDirection(int count, int i, int j, Random random)
+        public void ChooseDirection(int number, int i, int j, Random random)
         {
             this.x = i;
             this.y = j;
 
-            switch (count)
+            switch (number)
             {
                 case 1:
                     x += 1;
@@ -37,15 +40,13 @@ namespace ConsoleApp1
                 case 4:
                     y -= 1;
                     break;
-            }
-
-
+            }  
+            
         }
 
-        public void DontComeback(int number, int i, int j)
-        {
 
         }
 
     }
-}
+
+
