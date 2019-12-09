@@ -138,9 +138,11 @@ namespace ConsoleApp1
             if (number != oldDirection)
             {
                 vector.ChooseDirection(number, vector.x, vector.y, random);
+                oldDirection = number;
+
                 return;
             }
-
+           
             CheckDirection(number, random);
         }
 
@@ -151,7 +153,7 @@ namespace ConsoleApp1
             int number = vector.GenerateDirection(random);
             CheckDirection(number, random);
 
-            if (vector.x == 0 || vector.y == 0 || vector.x == array.GetLength(0) || vector.y == array.GetLength(1))
+            if (vector.x <= 0 || vector.y <= 0 || vector.x >= array.GetLength(0) || vector.y >= array.GetLength(1))
             {
                 return false;
             }
