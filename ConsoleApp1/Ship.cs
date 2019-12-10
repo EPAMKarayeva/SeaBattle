@@ -9,6 +9,7 @@ namespace ConsoleApp1
     abstract class Ship
     {
         public Vector vector = new Vector();
+
         public void GenerateShip(int count, string[,] array, Random random)
         {
             for (int m = 0; m < count; m++)
