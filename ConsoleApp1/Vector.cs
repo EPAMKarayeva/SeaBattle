@@ -12,19 +12,15 @@ namespace ConsoleApp1
 
         public int y;
 
-        public int z;
-
-        public int w;
-
         public int GenerateDirection(Random random)
         {
             return random.Next(1, 4);
         }
 
-        public void ChooseDirection(int number, int i, int j, Random random)
+        public void ChooseDirection(int number, int i, int j)
         {
-            this.x = i;
-            this.y = j;
+            x = i;
+            y = j;
 
             switch (number)
             {
@@ -40,13 +36,13 @@ namespace ConsoleApp1
                 case 4:
                     y -= 1;
                     break;
-            }  
-            
-        }
-
+            }
 
         }
+
 
     }
+
+}
 
 

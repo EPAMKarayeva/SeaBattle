@@ -6,11 +6,8 @@ using System.Threading;
 
 namespace ConsoleApp1
 {
-    class FourDeckShip : OneDeckShip
+    class FourDeckShip : Ship
     {
-        readonly Vector vector = new Vector();
-      
-
         public override bool CheckSpace(int number, string[,] array, int i, int j)
         {
 
@@ -45,5 +42,47 @@ namespace ConsoleApp1
             return flag;
         }
 
+        public override void FillArray(string[,] array, int i, int j, int number, Random random)
+        {
+            array[i, j] = "x";
+
+            vector.ChooseDirection(number, i, j);
+
+            array[vector.x, vector.y] = "x";
+
+            for (int m = 0; m < 2; m++)
+            {
+                var check = DoZigzag(array, vector, random);
+
+                while (!check)
+                {
+                    check = DoZigzag(array, vector, random);
+                }
+            }
+        }
+
+        public bool DoZigzag(string[,] array, Vector vector, Random random)
+        {
+            int number = vector.GenerateDirection(random);
+
+            vector.ChooseDirection(number, vector.x, vector.y);
+
+
+            if (vector.x <= 0 || vector.y <= 0 || vector.x > array.GetLength(0) - 1 || vector.y > array.GetLength(1) - 1)
+            {
+                return false;
+            }
+
+            if (array[vector.x, vector.y] == "x")
+            {
+                return false;
+            }
+
+            else
+            {
+                array[vector.x, vector.y] = "x";
+                return true;
+            }
+        }
     }
 }

@@ -6,9 +6,8 @@ using System.Threading;
 
 namespace ConsoleApp1
 {
-    class TwoDeckShip : OneDeckShip
+    class TwoDeckShip : Ship
     {
-        readonly Vector vector = new Vector();
 
         public override bool CheckSpace(int number, string[,] array, int i, int j)
         {
@@ -33,12 +32,19 @@ namespace ConsoleApp1
 
             if (!CheckAroundIsFree(i, j, array))
             {
-               flag = false;
+                flag = false;
             }
-            
+
 
             return flag;
         }
 
+        public override void FillArray(string[,] array, int i, int j, int number, Random random)
+        {
+            array[i, j] = "x";
+            vector.ChooseDirection(number, i, j);
+            array[vector.x, vector.y] = "x";
+
+        }
     }
 }

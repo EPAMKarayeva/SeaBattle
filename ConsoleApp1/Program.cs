@@ -8,7 +8,7 @@ namespace ConsoleApp1
 {
     class Program
     {
-        
+
         static void Main(string[] args)
         {
             const int row = 12;
@@ -17,20 +17,6 @@ namespace ConsoleApp1
 
             CreateBorder(array);
             Random random = new Random();
-
-            OneDeckShip ship = new OneDeckShip();
-            ship.GenerateShip(4, array, random);
-
-
-            for (int i = 0; i < array.GetLength(0); i++)
-            {
-                for (int j = 0; j < array.GetLength(1); j++)
-                {
-                    Console.Write(array[i, j]);
-                }
-
-                Console.WriteLine("");
-            }
 
             FourDeckShip fourDeckShip = new FourDeckShip();
             fourDeckShip.GenerateShip(1, array, random);
@@ -59,6 +45,18 @@ namespace ConsoleApp1
                 Console.WriteLine("");
             }
 
+            OneDeckShip ship = new OneDeckShip();
+            ship.GenerateShip(4, array, random);
+
+            for (int i = 0; i < array.GetLength(0); i++)
+            {
+                for (int j = 0; j < array.GetLength(1); j++)
+                {
+                    Console.Write(array[i, j]);
+                }
+
+                Console.WriteLine("");
+            }
 
             TwoDeckShip twoDeskShip = new TwoDeckShip();
             twoDeskShip.GenerateShip(3, array, random);
@@ -74,15 +72,14 @@ namespace ConsoleApp1
             }
 
 
-           
-        
+
             Console.ReadKey();
         }
 
-     
+
         static void CreateBorder(string[,] array)
         {
-          
+
             for (int i = 0; i < array.GetLength(0); i++)
             {
                 for (int j = 0; j < array.GetLength(1); j++)
@@ -101,9 +98,9 @@ namespace ConsoleApp1
                     {
                         array[i, j] = " ";
                     }
-                }        
+                }
 
-            }      
+            }
 
         }
 
